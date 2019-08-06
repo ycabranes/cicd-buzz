@@ -1,0 +1,12 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
+      - pip install pipenv --user
+      - pipenv install awscli aws-sam-cli
+      - pipenv run sam package --template-file buzz-template.yml --s3-bucket buzz-artifacts-2019 --output-template-file buzz-packaged-template.yml
+artifacts:
+  files:
+    - buzz-packaged-template.yml
